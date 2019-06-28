@@ -4,7 +4,8 @@ Queries that allows you decide who the best marvel character is statististically
 ---
 ## About data
 
-The data used was gotten from [here](https://gist.github.com/Mentrasto/967148a4b41713977839)
+The data used was gotten from [here](https://gist.github.com/Mentrasto/967148a4b41713977839).
+
 It entails 26 Marvel Character : be it hero or villian rated on six super abilities like strength , speed, fighting combat etc
 
 ## About Project
