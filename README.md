@@ -18,3 +18,5 @@ Although it is a small database, the code used can be applied to a bigger data s
 I also rewrote an article about it so you can read about the concluding result here
 
 **SPOILER ALERT:** It was Rogue. SEE WHY.
+
+There was also a  **Bonus** analyses to calculate the **BODY MASS INDEX**(BMI) of each character and categorize them as obese and healthy etc. You can also find the code in the file above named `marvel.sql` and in the article as well here.
