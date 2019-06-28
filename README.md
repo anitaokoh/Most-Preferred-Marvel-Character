@@ -13,7 +13,7 @@ This project was done solely on SQLITE and the measure of tendency used is the a
 
 You can find the queries used in the file above entitled  `marvel.sql`
 
-Although it is a small database, the code used can be applied to a bigger data so feel free to scrap  more get from [here](https://marvel.fandom.com/wiki/Marvel_Database)
+Although it is a small database, the code used can be applied to a bigger data so feel free to scrap  more get from [here](https://marvel.fandom.com/wiki/Marvel_Database) and reuse the queries
 
 I also rewrote an article about it so you can read about the concluding result here
 
