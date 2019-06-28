@@ -41,3 +41,59 @@ INSERT INTO Marvels VALUES(23, "Ghost Rider", 86, "Good", "Male", 1.88, 99, "EUA
 INSERT INTO Marvels VALUES(24, "Venon", 78, "Neutral", "Male", 1.90, 118, "EUA", 3, 4, 2, 6, 1, 4);
 INSERT INTO Marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "EUA", 2, 7, 2, 7, 1, 4);
 INSERT INTO Marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "EUA", 5, 2, 2, 2, 5, 3);
+
+
+/* To get an overview of the data */
+SELECT *
+FROM marvels
+LIMIT 5;
+
+/* To get the averages of the abilities and sum the points of the each character based on if they are above the averages or not to get the most preferred or most powerful */
+
+/* First, calculate the averages of the abilities and score each character based on if they are above the averages or not */
+WITH power_average AS (SELECT Name, CASE
+                                      WHEN intelligence > ( SELECT  AVG(intelligence)  FROM  marvels) THEN 1
+                                      ELSE 0
+                                     END AS intelligence,
+                                    CASE
+                                        WHEN Strength > ( SELECT  AVG(Strength)  FROM  marvels) THEN 1
+                                        ELSE 0
+                                    END AS Strength,
+                                    CASE
+                                        WHEN Speed > ( SELECT  AVG(Speed )  FROM  marvels) THEN 1
+                                        ELSE 0
+                                    END AS Speed,
+                                    CASE
+                                        WHEN Durability > ( SELECT  AVG(Durability )  FROM  marvels) THEN 1
+                                        ELSE 0
+                                    END AS Durability,
+                                    CASE
+                                      WHEN Energy_projection > ( SELECT  AVG(Energy_projection )  FROM  marvels) THEN 1
+                                      ELSE 0
+                                     END AS Energy_projection,
+                                    CASE
+                                      WHEN Fighting_skills > ( SELECT  AVG(Fighting_skills )  FROM  marvels) THEN 1
+                                      ELSE 0
+                                    END AS Fighting_skills
+                         FROM marvels)
+
+/* Secondly, sum thescores of each characters, sort the score and get the highest 5 */
+SELECT name, SUM(intelligence + strength + speed + durability + Energy_projection + Fighting_skills) as Power_rate
+FROM power_average
+GROUP BY name
+ORDER BY Power_rate DESC
+LIMIT 5;
+
+/* BONUS */
+/* Calculate the BMI of each character and categorize them based on obese, healthy etc */
+
+SELECT CASE
+         WHEN height_m * weight_kg > 30 then 'Obese'
+         WHEN height_m * weight_kg > 25 then 'Overweight'
+         WHEN height_m * weight_kg then 'Healthy'
+         ELSE 'thin'
+       END as category, count(*)
+
+FROM marvels
+GROUP BY 1
+ORDER BY 2;
